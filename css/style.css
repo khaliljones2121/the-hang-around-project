@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg width="200" height="400" xmlns="http://www.w3.org/2000/svg"><g stroke="white" stroke-width="4" fill="none"><circle cx="100" cy="80" r="40"/><line x1="100" y1="120" x2="100" y2="250"/><line x1="100" y1="150" x2="60" y2="200"/><line x1="100" y1="150" x2="140" y2="200"/><line x1="100" y1="250" x2="60" y2="320"/><line x1="100" y1="250" x2="140" y2="320"/></g></svg>');
+    background-repeat: no-repeat;
+    background-position: left 40px top 60px;
+    background-size: 200px 400px;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: calc(55% - 120px);
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background:
+        radial-gradient(circle at 28px 32px, #222 12px, transparent 13px),
+        radial-gradient(circle at 52px 32px, #222 12px, transparent 13px),
+        radial-gradient(ellipse at 40px 60px, #222 10px 6px, transparent 11px);
+    opacity: 0.18;
+    z-index: 1;
+}
+
+h1 {
+    color: #ff4c60;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+#word {
+    font-size: 1.5rem;
+    letter-spacing: 10px;
+    margin: 15px 0;
+}
+#letters {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#letters button {
+    margin: 4px;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+}
+#letters button:hover {
+    background: #ff4c60;
+}
+
+#letters button:disabled {
+    background: #444;
+    color: #888;
+    cursor: not-allowed;
+}
+
+#hangmanStage {
+    margin: 10px 0;
+    font-size: 1rem;
+    white-space: pre-line;
+    line-height: 1.2;
+    text-align: left;
+    border: 1px solid #444;
+    padding: 8px;
+    border-radius: 8px;
+    background: #222;
+}
+#message {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#restart {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: #ff4c60;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+#restart:hover {
+    background: #e63950;
+}
