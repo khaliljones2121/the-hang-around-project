@@ -69,3 +69,78 @@ function initGame() {
 	updateGuessed();
 	updateHangman();
 }
+function updateDisplay() {
+	if (wordContainer) {
+		wordContainer.textContent = displayWord.join(" ");
+	}
+}
+
+function setMessage(msg) {
+	if (messageContainer) {
+		messageContainer.textContent = msg;
+	}
+}
+function updateGuessed() {
+	if (guessedContainer) {
+		guessedContainer.textContent = guessedLetters.join(", ");
+	}
+}
+
+function updateHangman() {
+	if (hangmanContainer) {
+		hangmanContainer.textContent = bodyParts.slice(0, wrongGuesses).join(", ");
+	}
+}
+
+function handleGuess(letter) {
+	letter = letter.toLowerCase();
+	if (guessedLetters.includes(letter)) {
+		setMessage("You already guessed that!");
+		return;
+}
+	guessedLetters.push(letter);
+	updateGuessed();
+	if (selectedWord.includes(letter)) {
+		for (let i = 0; i < selectedWord.length; i++) {
+			if (selectedWord[i] === letter) {
+				displayWord[i] = letter;
+			}
+		}
+		updateDisplay();
+				if (!displayWord.includes("_")) {
+					setMessage("Winner!");
+					endGame();
+				}
+			} else {
+				wrongGuesses++;
+				updateHangman();
+				if (wrongGuesses === maxWrong) {
+					setMessage("Loser!");
+					endGame();
+				}
+			}
+		}
+function endGame() {
+	document.removeEventListener("keydown", onKeyDown);
+	if (restartBtn) restartBtn.style.display = "inline-block";
+}
+
+function onKeyDown(e) {
+	const letter = e.key;
+	if (/^[a-zA-Z]$/.test(letter)) {
+		handleGuess(letter);
+	}
+}
+
+// Initial setup
+document.addEventListener("DOMContentLoaded", () => {
+	initGame();
+	document.addEventListener("keydown", onKeyDown);
+	if (restartBtn) {
+		restartBtn.addEventListener("click", () => {
+			restartBtn.style.display = "none";
+			document.addEventListener("keydown", onKeyDown);
+			initGame();
+		});
+	}
+});
