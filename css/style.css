@@ -19,7 +19,6 @@ body {
     min-height: 100vh;
     margin: 0;
     position: relative;
-    /* Remove SVG background, use animated skeleton instead */
 }
 
 body::after {

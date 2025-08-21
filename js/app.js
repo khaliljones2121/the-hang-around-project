@@ -87,7 +87,6 @@ function updateGuessed() {
 }
 
 function updateHangman() {
-	// Animate skeleton body parts
 	for (let i = 0; i < bodyParts.length; i++) {
 		const part = document.getElementById(bodyParts[i]);
 		if (part) {
@@ -98,7 +97,6 @@ function updateHangman() {
 			}
 		}
 	}
-	// Optionally, still show text for accessibility
 	if (hangmanContainer) {
 		hangmanContainer.textContent = bodyParts.slice(0, wrongGuesses).map(p => p.replace(/-/g, ' ')).join(", ");
 	}
@@ -144,7 +142,6 @@ function onKeyDown(e) {
 	}
 }
 
-// Initial setup
 document.addEventListener("DOMContentLoaded", () => {
 	initGame();
 	document.addEventListener("keydown", onKeyDown);
