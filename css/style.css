@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=UnifrakturCook:wght@700&family=Montserrat:wght@400;600;800&display=swap');
+
 body {
     font-family: Arial, sans-serif;
     background: #010101;
@@ -11,12 +13,16 @@ body {
     position: relative;
     color: white;
 }
-
+body, h1, #word, #message, #letters button {
+    font-family: 'Creepster', 'Nosifer', 'UnifrakturCook', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 2px;
+}
 
 h1 {
     color: #ff4c60;
-    font-size: 2rem;
+    font-size: 2.3rem;
     margin-bottom: 15px;
+    font-family: 'Creepster', 'Nosifer';
 }
 
 #word {
