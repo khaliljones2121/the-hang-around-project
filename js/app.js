@@ -17,7 +17,7 @@
 // 4. WHILE game is not over:
 //       a. User selects a letter
 //       b. IF letter already in guessed_letters:
-//             - Display message: "You already guessed that!"
+//             - Display message: "You did that already!!"
 //             - Continue to next turn
 //          ELSE:
 //             - Add letter to guessed letters
@@ -27,17 +27,17 @@
 //             - wrong guesses = wrong guesses + 1
 //             - Draw body part based on wrong guesses count
 //       d. IF word is fully revealed:
-//             - Display "Winner!"
+//             - Display "Yes! You Won....finally!"
 //             - End game
 //       e. IF wrong guesses = max wrong:
-//             - Display "Loser!"
+//             - Display "Loser! You're smarter than this!"
 //             - End game
 // 5. Offer option to restart game
 // END
 
 
 const words = [
-	"banana", "guitar", "window", "rocket", "planet", "python", "flower", "castle"
+	"banana"," bright ", " health", "guitar", "window", "rocket", "planet"," strong ", "python", "flower", "castle", " light ", " radius ", 
 ];
 
 let selectedWord = "";
@@ -46,7 +46,7 @@ let guessedLetters = [];
 let wrongGuesses = 0;
 const maxWrong = 6;
 
-const bodyParts = ["Head", "Body", "Left Arm", "Right Arm", "Left Leg", "Right Leg"];
+const bodyParts = ["head", "body", "left-arm", "right-arm", "left-leg", "right-leg"];
 
 const wordContainer = document.getElementById("word");
 const messageContainer = document.getElementById("message");
@@ -87,15 +87,27 @@ function updateGuessed() {
 }
 
 function updateHangman() {
+	// Animate skeleton body parts
+	for (let i = 0; i < bodyParts.length; i++) {
+		const part = document.getElementById(bodyParts[i]);
+		if (part) {
+			if (i < wrongGuesses) {
+				part.classList.add("visible");
+			} else {
+				part.classList.remove("visible");
+			}
+		}
+	}
+	// Optionally, still show text for accessibility
 	if (hangmanContainer) {
-		hangmanContainer.textContent = bodyParts.slice(0, wrongGuesses).join(", ");
+		hangmanContainer.textContent = bodyParts.slice(0, wrongGuesses).map(p => p.replace(/-/g, ' ')).join(", ");
 	}
 }
 
 function handleGuess(letter) {
 	letter = letter.toLowerCase();
 	if (guessedLetters.includes(letter)) {
-		setMessage("You already guessed that!");
+		setMessage("You did that already!");
 		return;
 }
 	guessedLetters.push(letter);
@@ -108,14 +120,14 @@ function handleGuess(letter) {
 		}
 		updateDisplay();
 				if (!displayWord.includes("_")) {
-					setMessage("Winner!");
+					setMessage("Yes! You Won....finally");
 					endGame();
 				}
 			} else {
 				wrongGuesses++;
 				updateHangman();
 				if (wrongGuesses === maxWrong) {
-					setMessage("Loser!");
+					setMessage("Loser! You're smarter than this");
 					endGame();
 				}
 			}
