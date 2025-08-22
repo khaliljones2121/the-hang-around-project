@@ -37,7 +37,7 @@
 
 
 const words = [
-	"banana"," bright ", " health", "guitar", "window", "rocket", "planet"," strong ", "python", "flower", "castle", " light ", " radius ", 
+	"banana"," bright ", "health", "guitar", "window", "rocket", "planet"," strong ", "python", "flower", "castle", "light", "radius", 
 ];
 
 let selectedWord = "";
