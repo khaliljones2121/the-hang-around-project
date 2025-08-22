@@ -1,4 +1,4 @@
-// Tsu's Hang Around (still working on title every title I come upwith sounds bad) anny suggestions??
+// Tsu's Hang Around 
 // 1. Select a random word
 //    - Word length: 8 letters or less
 // 2. Display underscores for each letter in the word
