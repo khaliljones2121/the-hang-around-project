@@ -137,6 +137,10 @@ function handleGuess(letter) {
 	}
 }
 
+// Stub for playBoneSound to prevent ReferenceError
+function playBoneSound() {
+	// You can add sound playing logic here if desired
+}
 
 function showBloodDrip() {
 	const drip = document.getElementById('blood-drip');
@@ -156,6 +160,7 @@ function endGame() {
 		if (restartBtn) restartBtn.style.display = "inline-block";
 	}
 }
+
 function onKeyDown(e) {
 	const letter = e.key;
 	if (/^[a-zA-Z]$/.test(letter)) {
