@@ -37,7 +37,7 @@
 
 
 const words = [
-	"banana"," bright", "health", "guitar", "window", "rocket", "planet","strong", "python", "flower", "castle", "light", "radius", 
+	"banana", "bright", "health", "guitar", "window", "rocket", "planet", "strong", "python", "flower", "castle", "light", "radius", "pickles", "miami", "goals", "ranch", "opera", "egypt", "alaska", "fisher", "dakota"
 ];
 
 let selectedWord = "";
@@ -54,6 +54,8 @@ const guessedContainer = document.getElementById("guessed");
 const hangmanContainer = document.getElementById("hangman");
 const restartBtn = document.getElementById("restart");
 
+
+
 function selectRandomWord() {
 	const filtered = words.filter(w => w.length <= 8);
 	selectedWord = filtered[Math.floor(Math.random() * filtered.length)].toLowerCase();
@@ -68,7 +70,9 @@ function initGame() {
 	setMessage("");
 	updateGuessed();
 	updateHangman();
+	hideBloodDrip(); // Hide blood drip on new game
 }
+
 function updateDisplay() {
 	if (wordContainer) {
 		wordContainer.textContent = displayWord.join(" ");
@@ -80,6 +84,7 @@ function setMessage(msg) {
 		messageContainer.textContent = msg;
 	}
 }
+
 function updateGuessed() {
 	if (guessedContainer) {
 		guessedContainer.textContent = guessedLetters.join(", ");
@@ -107,7 +112,7 @@ function handleGuess(letter) {
 	if (guessedLetters.includes(letter)) {
 		setMessage("You did that already!");
 		return;
-}
+	}
 	guessedLetters.push(letter);
 	updateGuessed();
 	if (selectedWord.includes(letter)) {
@@ -117,24 +122,44 @@ function handleGuess(letter) {
 			}
 		}
 		updateDisplay();
-				if (!displayWord.includes("_")) {
-					setMessage("Yes! You Won....finally");
-					endGame();
-				}
-			} else {
-				wrongGuesses++;
-				updateHangman();
-				if (wrongGuesses === maxWrong) {
-					setMessage("Loser! You're smarter than this");
-					endGame();
-				}
-			}
+		if (!displayWord.includes("_")) {
+			setMessage("Yes! You Won....finally!");
+			endGame();
 		}
+	} else {
+		wrongGuesses++;
+		playBoneSound();
+		updateHangman();
+		if (wrongGuesses === maxWrong) {
+			setMessage("Loser! You're smarter than this!");
+			endGame();
+		}
+	}
+}
+
+// Stub for playBoneSound to prevent ReferenceError
+function playBoneSound() {
+	// You can add sound playing logic here if desired
+}
+
+function showBloodDrip() {
+	const drip = document.getElementById('blood-drip');
+	if (drip) drip.classList.add('active');
+}
+
+function hideBloodDrip() {
+	const drip = document.getElementById('blood-drip');
+	if (drip) drip.classList.remove('active');
+}
+
 function endGame() {
 	document.removeEventListener("keydown", onKeyDown);
 	if (restartBtn) restartBtn.style.display = "inline-block";
+	if (wrongGuesses === maxWrong) {
+		showBloodDrip();
+		if (restartBtn) restartBtn.style.display = "inline-block";
+	}
 }
-
 function onKeyDown(e) {
 	const letter = e.key;
 	if (/^[a-zA-Z]$/.test(letter)) {

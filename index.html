@@ -1,34 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tsu's Hang Around</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-        <div id="skeleton-bg">
-            <svg id="head" width="80" height="80" style="top:60px;" viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" stroke="white" stroke-width="5" fill="none"/></svg>
-            <svg id="body" width="20" height="120" style="top:140px;" viewBox="0 0 20 120"><line x1="10" y1="0" x2="10" y2="120" stroke="white" stroke-width="5"/></svg>
-            <svg id="left-arm" width="60" height="80" style="top:150px;left:calc(50% - 60px);" viewBox="0 0 60 80"><line x1="60" y1="0" x2="0" y2="80" stroke="white" stroke-width="5"/></svg>
-            <svg id="right-arm" width="60" height="80" style="top:150px;left:calc(50% + 20px);" viewBox="0 0 60 80"><line x1="0" y1="0" x2="60" y2="80" stroke="white" stroke-width="5"/></svg>
-            <svg id="left-leg" width="60" height="100" style="top:260px;left:calc(50% - 40px);" viewBox="0 0 60 100"><line x1="60" y1="0" x2="0" y2="100" stroke="white" stroke-width="5"/></svg>
-            <svg id="right-leg" width="60" height="100" style="top:260px;left:calc(50% + 0px);" viewBox="0 0 60 100"><line x1="0" y1="0" x2="60" y2="100" stroke="white" stroke-width="5"/></svg>
-        </div>
-        <h1>Tsu's Hang Around</h1>
-        <div id="hangman"></div>
-        <div id="word"></div>
-        <div id="guessed"></div>
-        <div id="message"></div>
-        <button id="restart">Play Again</button>
-        <script src="js/app.js"></script>
+    <div id="skeleton-bg" style="position: relative;">
+        <svg id="head" width="80" height="80" viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="35" stroke="white" stroke-width="5" fill="none" />
+        </svg>
+        <svg id="body" width="20" height="120" viewBox="0 0 20 120">
+            <line x1="10" y1="0" x2="10" y2="120" stroke="white" stroke-width="5" />
+        </svg>
+        <svg id="left-arm" width="60" height="80" viewBox="0 0 60 80">
+            <line x1="60" y1="0" x2="0" y2="80" stroke="white" stroke-width="5" />
+        </svg>
+        <svg id="right-arm" width="60" height="80" viewBox="0 0 60 80">
+            <line x1="0" y1="0" x2="60" y2="80" stroke="white" stroke-width="5" />
+        </svg>
+        <svg id="left-leg" width="60" height="100" viewBox="0 0 60 100">
+            <line x1="60" y1="0" x2="0" y2="100" stroke="white" stroke-width="5" />
+        </svg>
+        <svg id="right-leg" width="60" height="100" viewBox="0 0 60 100">
+            <line x1="0" y1="0" x2="60" y2="100" stroke="white" stroke-width="5" />
+        </svg>
+
+    </div>
+    <h1>Tsu's Hang Around</h1>
+    <div id="hangman"></div>
+    <div id="word"></div>
+    <div id="guessed"></div>
+    <div id="message"></div>
+    <button id="restart">Play Again</button>
+    <script src="js/app.js"></script>
+    <div id="instructions" style="margin: 20px auto; max-width: 500px; text-align: center; color: #fff;">
+        <h2>How to Play</h2>
+        <p>
+            Guess the hidden word one letter at a time.<br>
+            Each incorrect guess adds a part to the hangman.<br>
+            You win by guessing the word before the hangman is complete.<br>
+            Click "Play Again" to start a new game!
+        </p>
+    </div>
+    <div id="blood-drip">
+        <svg class="blood" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h400v60c-10 20-30 40-60 40s-40-20-60-20-40 20-60 20-40-20-60-20-40 20-60 20S10 80 0 60V0z"
+                fill="#b30335" />
+            <ellipse cx="60" cy="110" rx="12" ry="10" fill="#b30335" />
+            <ellipse cx="120" cy="115" rx="10" ry="8" fill="#b30335" />
+            <ellipse cx="200" cy="112" rx="14" ry="12" fill="#b30335" />
+            <ellipse cx="280" cy="116" rx="11" ry="9" fill="#b30335" />
+            <ellipse cx="340" cy="110" rx="13" ry="11" fill="#b30335" />
+        </svg>
+        <h1>LOSER</h1>
+    </div>
 </body>
-<div id="instructions" style="margin: 20px auto; max-width: 500px; text-align: center; color: #fff;">
-    <h2>How to Play</h2>
-    <p>
-        Guess the hidden word one letter at a time.<br>
-        Each incorrect guess adds a part to the hangman.<br>
-        You win by guessing the word before the hangman is complete.<br>
-        Click "Play Again" to start a new game!
-    </p>
-</div>
+
+</html>
