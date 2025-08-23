@@ -137,10 +137,6 @@ function handleGuess(letter) {
 	}
 }
 
-// Stub for playBoneSound to prevent ReferenceError
-function playBoneSound() {
-	// You can add sound playing logic here if desired
-}
 
 function showBloodDrip() {
 	const drip = document.getElementById('blood-drip');
